@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 function updateCountdown() {
-    const endDate = new Date('2024-08-24T17:00:00');
+    const endDate = new Date('2024-08-24T16:30:00');
     const now = new Date();
     const timeDiff = endDate - now;
 
