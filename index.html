@@ -61,6 +61,10 @@
                 </a>
             </div>
         </div>
+        <div id="scrollIndicator" class="scroll-indicator">
+            <p>Desliza hacia abajo</p>
+            <div class="arrow"></div>
+        </div>
         
         <div class="section-2">
             <div class="decorative-corner top-right"></div>
@@ -253,5 +257,21 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="scripts.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    var scrollIndicator = document.getElementById('scrollIndicator');
+
+    // Función para detectar el scroll
+    function handleScroll() {
+        scrollIndicator.style.display = 'none'; // Ocultar la animación al deslizar
+    }
+
+    // Mostrar la animación solo en dispositivos móviles
+    if (window.innerWidth <= 768) {
+        scrollIndicator.style.display = 'block'; // Mostrar la animación
+        window.addEventListener('scroll', handleScroll);
+    }
+});
+    </script>
 </body>
 </html>

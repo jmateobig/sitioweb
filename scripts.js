@@ -39,6 +39,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const playIcon = playPauseButton.querySelector('.fa-play');
     const pauseIcon = playPauseButton.querySelector('.fa-pause');
 
+    // Aplicar la clase no-vibrate al inicio para el efecto de agrandamiento inicial
+    playPauseButton.classList.add('no-vibrate');
+
+    // Retirar la clase no-vibrate después de la animación inicial para empezar a vibrar
+    playPauseButton.addEventListener('animationend', function(event) {
+        if (event.animationName === 'focus') {
+            playPauseButton.classList.remove('no-vibrate');
+        }
+    });
+
     playPauseButton.addEventListener('click', function() {
         if (audio.paused) {
             audio.play().catch(error => {
@@ -46,10 +56,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             playIcon.style.display = 'none';
             pauseIcon.style.display = 'inline-block';
+            playPauseButton.classList.add('active');
         } else {
             audio.pause();
             playIcon.style.display = 'inline-block';
             pauseIcon.style.display = 'none';
+            playPauseButton.classList.remove('active');
         }
     });
 });

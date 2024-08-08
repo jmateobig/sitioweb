@@ -403,3 +403,84 @@ body {
         font-size: 30px;
     }
 }
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px; /* Ajusta la distancia desde el fondo según tu preferencia */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    font-family: var(--font-family-lobster);
+    color: var(--gray-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 9999;
+    display: none; /* Ocultar por defecto */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.scroll-indicator p {
+    margin: 0;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid #697568;
+    margin: 10px auto;
+    animation: bounce 1s infinite;
+}
+
+@keyframes focus {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(2.0);
+    }
+}
+
+@keyframes vibrate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.music-widget {
+    position: relative;
+    display: inline-block;
+}
+
+#playPauseButton {
+    animation: focus 2s ease-in-out forwards, vibrate 0.6s infinite;
+}
+
+#playPauseButton.no-vibrate {
+    animation: focus 2s ease-in-out forwards;
+}
+
+#playPauseButton.active {
+    animation: none;
+}
